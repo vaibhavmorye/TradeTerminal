@@ -10,5 +10,6 @@ export function watch(symbols) {
 }
 
 export function unwatch(symbol) {
+  console.log(symbol);
   socket.emit("leave", symbol);
 }

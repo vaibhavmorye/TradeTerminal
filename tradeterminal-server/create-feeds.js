@@ -49,7 +49,8 @@ function simulateChange() {
         stock.low = stock.last;
     }
     //console.log(stock);
-    onChangeHandler(stocks);
+    onChangeHandler(stock.symbol, 'stock', stock);
+    //console.log(stock);
 }
 
 function start(onChange) {

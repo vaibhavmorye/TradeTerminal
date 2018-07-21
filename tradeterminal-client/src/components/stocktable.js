@@ -5,9 +5,10 @@ export default class StockTable extends Component {
   render() {
     var items = [];
     var i = 0;
-   // console.log(this.props.stocks);
-    for (var stock of this.props.stocks) {
-      console.log(stock);
+   //console.log(this.props.stocks);
+    for (var symbol in this.props.stocks) {
+      //console.log(symbol);
+      var stock = this.props.stocks[symbol];
       items.push(
         <StockRow
           key={i}

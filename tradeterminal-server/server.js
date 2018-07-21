@@ -14,20 +14,46 @@ app.use(cors());
 const server = http.createServer(app);
 
 const io = socketIo(server);
-let interval;
-io.on("connection", socket => {
-  console.log("New client connected");
 
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
+
+io.on("connection", socket => {
+  console.log("New client connected " + socket.id);
+
+  socket.on("join", function(rooms) {
+    console.log("Socket %s subscribed to %s", socket.id, rooms);
+    if (Array.isArray(rooms)) {
+      //console.log("rooms :" + rooms);
+      rooms.forEach(function(roomId) {
+        socket.join(roomId);
+      });
+    } else {
+      socket.join(roomId);
+    }
+
+    socket.on("leave", ( room) => {
+      console.log("on leave called");   
+      socket.leave(room);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Client disconnected");
+    });
   });
 });
 
-
-feed.start((stocks)=>{
+feed.start(
+  function(room, type, message) {
+    io.in(room).clients((err, clients) => {
+      console.log(room+" "+clients); // an array containing socket ids in 'room3'
+    });
+    io.to(room).emit(type, message);
+  }
+  //stocks => {
   //console.log("before emit");
   //console.log(stocks);
-  io.emit('stock', stocks);
-});
+  // io.emit("stock", stocks);
+);
 
-if(server.listen(port)){console.log('server listing port '+port)};
+if (server.listen(port)) {
+  console.log("server listing port " + port);
+}

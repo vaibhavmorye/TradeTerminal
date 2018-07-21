@@ -15,7 +15,7 @@ export default class WatchStock extends Component {
     //console.log("me called");
     // alert("symbol " + this.state.symbol);
     this.props.watchStockHandler(this.state.symbol);
-    this.state(() => { return { symbol: "" } });
+    this.setState(() => { return { symbol: "" } });
 
   }
 
