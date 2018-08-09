@@ -2,16 +2,16 @@ var interval,
     onChangeHandler;
 
 var stocks = [
-    {symbol: "HEG", open: 38.87},
-    {symbol: "HUL", open: 25.40},
-    {symbol: "GCRB", open: 97.05},
-    {symbol: "UAL", open: 69.45},
-    {symbol: "IDA", open: 83.24},
-    {symbol: "IDFC", open: 55.76},
-    {symbol: "ECH", open: 76.12},
-    {symbol: "TCS", open: 61.75},
-    {symbol: "GBP", open: 15.84},
-    {symbol: "NIIT", open: 154.50}
+    {symbol: "HEG", open: 38.87,key:0},
+    {symbol: "HUL", open: 25.40,key:1},
+    {symbol: "GCRB", open: 97.05,key:2},
+    {symbol: "UAL", open: 69.45,key:3},
+    {symbol: "IDA", open: 83.24,key:4},
+    {symbol: "IDFC", open: 55.76,key:6},
+    {symbol: "ECH", open: 76.12,key:5},
+    {symbol: "TCS", open: 61.75,key:6},
+    {symbol: "GBP", open: 15.84,key:8},
+    {symbol: "NIIT", open: 154.50,key:7}
 ];
 
 stocks.forEach(function(stock) {

@@ -2,22 +2,25 @@ import React, { Component } from "react";
 import StockRow from './stockrow';
 
 export default class StockTable extends Component {
+  constructor(props) {
+    super(props)
+    this.items = [];
+  }
+
   render() {
-    var items = [];
-    var i = 0;
-   //console.log(this.props.stocks);
+  //   this.items = [];
+    //console.log(this.props.stocks);
     for (var symbol in this.props.stocks) {
       //console.log(symbol);
       var stock = this.props.stocks[symbol];
-      items.push(
+      this.items.push(
         <StockRow
-          key={i}
+          key={stock.key}
           stock={stock}
           last={stock.last}
           unwatchStockHandler={this.props.unwatchStockHandler}
         />
       );
-      i++;
     }
     return (
       <div className="row">
@@ -33,7 +36,7 @@ export default class StockTable extends Component {
               <th>Unwatch</th>
             </tr>
           </thead>
-          <tbody>{items}</tbody>
+          <tbody>{this.items}</tbody>
         </table>
       </div>
     );

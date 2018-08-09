@@ -44,7 +44,7 @@ io.on("connection", socket => {
 feed.start(
   function(room, type, message) {
     io.in(room).clients((err, clients) => {
-      console.log(room+" "+clients); // an array containing socket ids in 'room3'
+     // console.log(room+" "+clients); // an array containing socket ids in 'room3'
     });
     io.to(room).emit(type, message);
   }
